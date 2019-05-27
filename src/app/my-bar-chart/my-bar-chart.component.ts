@@ -5,14 +5,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./my-bar-chart.component.css']
 })
 export class MyBarChartComponent{
-  constructor() { }
+  constructor(){ 
+  	var hour:number
+	for (hour = 0; hour <= 24; hour++) {
+		this.barChartData[0].data[hour] = hour
+		this.barChartData[1].data[hour] = hour + 1
+   }
+
+  }
   public barChartOptions = {
     responsive: true
   };
-  public barChartLabels = ['January', 'February', 'Mars', 'April'];
+  public barChartLabels = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24'];
   public barChartData = [
-    { data: [330, 600, 260, 700], label: 'Account A' },
-    { data: [120, 455, 100, 340], label: 'Account B' },
-    { data: [45, 67, 800, 500], label: 'Account C' }
-  ];
+    { data: [0], label: 'Account A' },
+    { data: [0], label: 'Account B' },
+  ]
 }

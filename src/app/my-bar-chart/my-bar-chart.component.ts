@@ -5,13 +5,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./my-bar-chart.component.css']
 })
 export class MyBarChartComponent{
-  constructor(){ 
+  data:number
+  constructor(){
+	this.data = 1
   	var hour:number
 	for (hour = 0; hour <= 24; hour++) {
 		this.barChartData[0].data[hour] = hour
-		this.barChartData[1].data[hour] = hour + 1
+		this.barChartData[1].data[hour] = hour + this.data
    }
-
   }
   public barChartOptions = {
     responsive: true
@@ -21,4 +22,8 @@ export class MyBarChartComponent{
     { data: [0], label: 'Account A' },
     { data: [0], label: 'Account B' },
   ]
+  public onChartClick(e: any): void {
+	  console.log('hello')
+	  this.data++
+  }
 }

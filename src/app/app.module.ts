@@ -8,6 +8,7 @@ import { MyDoughnutChartComponent } from './my-doughnut-chart/my-doughnut-chart.
 import { MyRadarChartComponent } from './my-radar-chart/my-radar-chart.component';
 import { MyPieChartComponent } from './my-pie-chart/my-pie-chart.component';
 import { Routes, RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms'
 
 const routes: Routes = [
   {path: 'bar-chart', component: MyBarChartComponent},
@@ -30,6 +31,7 @@ const routes: Routes = [
     AppRoutingModule,
 	ChartsModule,
 	RouterModule.forRoot(routes),
+	FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

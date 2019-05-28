@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { BaseChartDirective } from 'ng2-charts';
+import { Component, OnInit, ViewChild } from '@angular/core';
 @Component({
   selector: 'app-my-bar-chart',
   templateUrl: './my-bar-chart.component.html',
   styleUrls: ['./my-bar-chart.component.css']
 })
 export class MyBarChartComponent{
-  data:number
+  @ViewChild(BaseChartDirective) chart: BaseChartDirective; data:number
   constructor(){
 	this.data = 1
   	var hour:number
@@ -25,5 +26,11 @@ export class MyBarChartComponent{
   public onChartClick(e: any): void {
 	  console.log('hello')
 	  this.data++
+	var hour:number
+	for (hour = 0; hour <= 24; hour++) {
+		this.barChartData[0].data[hour] = hour
+		this.barChartData[1].data[hour] = hour + this.data
+    }
+	this.chart.chart.update()
   }
 }

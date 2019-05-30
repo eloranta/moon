@@ -11,8 +11,21 @@ export class EmployeeComponent implements OnChanges {
   @Input() locator: string;	
   myLongitude: number
   myLatitude: number
+
+  utcYear: number
+  utcMonth: number
+  utcDay: number
+  utcHour: number
+  dayNumber: number
   
   constructor(){
+    let now = new Date()
+    this.utcYear = now.getUTCFullYear()
+    this.utcMonth = now.getUTCMonth() + 1
+    this.utcDay = now.getUTCDate()
+    this.utcHour = now.getUTCHours()
+	this.utcMinutes = now.getUTCMinutes()
+
   }
   public barChartOptions = {
     responsive: true

@@ -1,7 +1,43 @@
 My Locator: {{locator}}<br>
 My longitude: {{myLongitude.toFixed(2)}}<br>
 My latitude: {{myLatitude.toFixed(2)}}<br>
-Time:&nbsp;{{this.utcYear}}-{{this.utcMonth}}-{{this.utcDay}}&nbsp;{{this.utcHour}}:{{this.utcMinutes}}<br>
+Time:{{this.utcYear}}-{{this.utcMonth}}-{{this.utcDay}}&nbsp;{{this.utcHour}}:{{this.utcMinutes}}<br>
+Day number:{{this.dayNumber}}<br>
+Sun:<br>
+  longitudeOfPerihelion:&nbsp;{{this.sun.longitudeOfPerihelion(this.dayNumber)}}<br>
+  eccentricity:&nbsp;{{this.sun.eccentricity(this.dayNumber)}}<br>
+  meanAnomaly:&nbsp;{{this.sun.meanAnomaly(this.dayNumber)}}<br>
+  meanLongitude:&nbsp;{{this.sun.meanLongitude(this.dayNumber)}}<br>
+  eccentricAnomaly:&nbsp;{{this.sun.eccentricAnomaly(this.dayNumber)}}<br>
+  x:&nbsp;{{this.sun.x(this.dayNumber)}}<br>
+  y:&nbsp;{{this.sun.y(this.dayNumber)}}<br>
+  distance:&nbsp;{{this.sun.distance(this.dayNumber)}}<br>
+  trueAnomaly:&nbsp;{{this.sun.trueAnomaly(this.dayNumber)}}<br>
+  longitude:&nbsp;{{this.sun.longitude(this.dayNumber)}}<br>
+  xEcliptic:&nbsp;{{this.sun.xEcliptic(this.dayNumber)}}<br>
+  yEcliptic:&nbsp;{{this.sun.yEcliptic(this.dayNumber)}}<br>
+  xEquatorial:&nbsp;{{this.sun.xEquatorial(this.dayNumber)}}<br>
+  yEquatorial:&nbsp;{{this.sun.yEquatorial(this.dayNumber, this.earth)}}<br>
+  zEquatorial:&nbsp;{{this.sun.zEquatorial(this.dayNumber, this.earth)}}<br>
+  rightAscension:&nbsp;{{this.sun.rightAscension(this.dayNumber, this.earth)}}<br>
+  declination:&nbsp;{{this.sun.declination(this.dayNumber, this.earth)}}<br>
+
+  GMST0:&nbsp;{{this.sun.GMST0(this.dayNumber, this.earth)}}<br>
+  localSiderealTime:&nbsp;{{this.sun.localSiderealTime(this.dayNumber, this.myLongitude)}}<br>
+  hourAngle:&nbsp;{{this.sun.hourAngle(this.dayNumber, this.myLongitude, this.earth)}}<br>
+
+  x2:&nbsp;{{this.sun.x2(this.dayNumber, this.myLongitude, this.earth)}}<br>
+  y2:&nbsp;{{this.sun.y2(this.dayNumber, this.myLongitude, this.earth)}}<br>
+  z2:&nbsp;{{this.sun.z2(this.dayNumber, this.myLongitude, this.earth)}}<br>
+
+  xHorizontal:&nbsp;{{this.sun.xHorizontal(this.dayNumber, this.myLongitude, this.myLatitude, this.earth)}}<br>
+  yHorizontal:&nbsp;{{this.sun.yHorizontal(this.dayNumber, this.myLongitude, this.myLatitude, this.earth)}}<br>
+  zHorizontal:&nbsp;{{this.sun.zHorizontal(this.dayNumber, this.myLongitude, this.myLatitude, this.earth)}}<br>
+
+  azimuth:&nbsp;{{this.sun.azimuth(this.dayNumber, this.myLongitude, this.myLatitude, this.earth).toFixed(2)}}<br>
+  elevation:&nbsp;{{this.sun.elevation(this.dayNumber, this.myLongitude, this.myLatitude, this.earth).toFixed(2)}}<br><br>
+
+
 <div>
   <canvas
       baseChart

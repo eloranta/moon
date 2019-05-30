@@ -9,6 +9,8 @@ import { MyRadarChartComponent } from './my-radar-chart/my-radar-chart.component
 import { MyPieChartComponent } from './my-pie-chart/my-pie-chart.component';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms'
+import { EmployeeComponent }  from './my-bar-chart/employee.component';
+
 
 const routes: Routes = [
   {path: 'bar-chart', component: MyBarChartComponent},
@@ -24,7 +26,8 @@ const routes: Routes = [
     MyBarChartComponent,
     MyDoughnutChartComponent,
     MyRadarChartComponent,
-    MyPieChartComponent
+    MyPieChartComponent,
+	EmployeeComponent
   ],
   imports: [
     BrowserModule,

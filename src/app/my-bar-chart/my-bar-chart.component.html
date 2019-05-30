@@ -1,4 +1,9 @@
 <div>
+	<p>Locator: <input [(ngModel)]="locator"/></p>
+</div>
+<app-emp [message]="locator"></app-emp>
+
+<div>
   <canvas
       baseChart
       [chartType]="'line'"

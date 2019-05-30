@@ -6,9 +6,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
   styleUrls: ['./my-bar-chart.component.css']
 })
 export class MyBarChartComponent{
-  @ViewChild(BaseChartDirective) chart: BaseChartDirective; data:number
+  @ViewChild(BaseChartDirective) chart: BaseChartDirective
   constructor(){
-	this.data = 1
   	var hour:number
 	for (hour = 0; hour <= 24; hour++) {
 		this.barChartData[0].data[hour] = hour
@@ -25,7 +24,7 @@ export class MyBarChartComponent{
   ]
   public onChartClick(e: any): void {
 	  console.log('hello')
-	  this.data++
+	  
 	var hour:number
 	for (hour = 0; hour <= 24; hour++) {
 		this.barChartData[0].data[hour] = hour

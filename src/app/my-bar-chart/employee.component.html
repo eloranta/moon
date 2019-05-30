@@ -1,4 +1,14 @@
-<br/><b>Message Change Log</b>
-<div *ngFor="let changeLog of allMsgChangeLogs">
-   {{changeLog}}
+<div>
+Locator: {{locator}}
+</div>
+<div>
+  <canvas
+      baseChart
+      [chartType]="'line'"
+      [datasets]="barChartData"
+      [labels]="barChartLabels"
+      [options]="barChartOptions"
+      [legend]="true"
+      >
+  </canvas>
 </div>

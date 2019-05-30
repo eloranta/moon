@@ -1,16 +1,5 @@
 <div>
-	<p>Locator: <input [(ngModel)]="locator"/></p>
+	<p>Locator: <input [(ngModel)]="locatora"/></p>
 </div>
-<app-emp [message]="locator"></app-emp>
+<app-emp [locator]="locatora"></app-emp>
 
-<div>
-  <canvas
-      baseChart
-      [chartType]="'line'"
-      [datasets]="barChartData"
-      [labels]="barChartLabels"
-      [options]="barChartOptions"
-      [legend]="true"
-      (chartClick)="onChartClick($event)">
-  </canvas>
-</div>

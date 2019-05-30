@@ -10,6 +10,9 @@ export class EmployeeComponent implements OnChanges {
 
   @Input() locator: string;	
   newLocator: string;
+  myLongitude: number
+  myLatitude: number
+  
   constructor(){
   }
   public barChartOptions = {
@@ -41,7 +44,8 @@ export class EmployeeComponent implements OnChanges {
 			if (this.newLocator[5] < 'a') continue
 			if (this.newLocator[5] > 'x') continue
 			this.locator = this.newLocator
-			
+			this.myLatitude = this.observerLatitude(this.locator)
+			this.myLongitude = this.observerLongitude(this.locator)
 			var hour:number
 			for (hour = 0; hour <= 24; hour++) {
 				this.barChartData[0].data[hour] = hour
@@ -54,5 +58,20 @@ export class EmployeeComponent implements OnChanges {
     
 		}
     }
+  }
+    observerLongitude(locator) {
+    locator = locator.toUpperCase()
+    let field = 20 * (locator.charCodeAt(0) - 65) - 180
+    let grid = 2 * (locator.charCodeAt(2) - 48)
+    let subGrid = 5 * (locator.charCodeAt(4) - 65) / 60
+    return field + grid + subGrid + 1/24
+  }
+  
+  observerLatitude(locator) {
+    locator = locator.toUpperCase()
+    let field = 10 * (locator.charCodeAt(1) - 65) - 90
+    let grid = locator.charCodeAt(3) - 48
+    let subGrid = 2.5 * (locator.charCodeAt(5) - 65) / 60
+    return field + grid + subGrid + 1/48
   }
 }

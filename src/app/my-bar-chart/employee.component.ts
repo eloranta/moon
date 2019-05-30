@@ -9,7 +9,6 @@ export class EmployeeComponent implements OnChanges {
   @ViewChild(BaseChartDirective) chart: BaseChartDirective
 
   @Input() locator: string;	
-  newLocator: string;
   myLongitude: number
   myLatitude: number
   
@@ -29,21 +28,21 @@ export class EmployeeComponent implements OnChanges {
 	for (let propName in changes) {  
 		
 		if (propName === 'locator') {
-		    this.newLocator = changes[propName].currentValue.toLowerCase();
-		if (this.newLocator.length != 6) continue
-			if (this.newLocator[0] < 'a') continue
-			if (this.newLocator[0] > 'r') continue
-			if (this.newLocator[1] < 'a') continue
-			if (this.newLocator[1] > 'r') continue
-			if (this.newLocator[2] < '0') continue
-			if (this.newLocator[2] > '9') continue
-			if (this.newLocator[3] < '0') continue
-			if (this.newLocator[3] > '9') continue
-			if (this.newLocator[4] < 'a') continue
-			if (this.newLocator[4] > 'x') continue
-			if (this.newLocator[5] < 'a') continue
-			if (this.newLocator[5] > 'x') continue
-			this.locator = this.newLocator
+		    var newLocator = changes[propName].currentValue.toLowerCase();
+		if (newLocator.length != 6) continue
+			if (newLocator[0] < 'a') continue
+			if (newLocator[0] > 'r') continue
+			if (newLocator[1] < 'a') continue
+			if (newLocator[1] > 'r') continue
+			if (newLocator[2] < '0') continue
+			if (newLocator[2] > '9') continue
+			if (newLocator[3] < '0') continue
+			if (newLocator[3] > '9') continue
+			if (newLocator[4] < 'a') continue
+			if (newLocator[4] > 'x') continue
+			if (newLocator[5] < 'a') continue
+			if (newLocator[5] > 'x') continue
+			this.locator = newLocator
 			this.myLatitude = this.observerLatitude(this.locator)
 			this.myLongitude = this.observerLongitude(this.locator)
 			var hour:number
@@ -59,7 +58,7 @@ export class EmployeeComponent implements OnChanges {
 		}
     }
   }
-    observerLongitude(locator) {
+  observerLongitude(locator) {
     locator = locator.toUpperCase()
     let field = 20 * (locator.charCodeAt(0) - 65) - 180
     let grid = 2 * (locator.charCodeAt(2) - 48)

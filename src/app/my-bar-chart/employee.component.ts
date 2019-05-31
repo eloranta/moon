@@ -519,7 +519,7 @@ export class EmployeeComponent implements OnChanges {
 			var hour:number
 			for (hour = 0; hour <= 24; hour++) {
 				var dayNumber = this.julianDayNumber(this.utcYear, this.utcMonth, this.utcDay, hour)
-				this.barChartData[0].data[hour] = this.sun.elevation(dayNumber, this.myLongitude, this.myLatitude, this.earth) 
+				this.barChartData[0].data[hour] = this.moon.elevation(dayNumber, this.myLongitude, this.myLatitude, this.sun, this.earth) 
 			}
 			if (this.chart && this.chart.chart){
 			    this.chart.chart.update()
@@ -550,7 +550,7 @@ export class EmployeeComponent implements OnChanges {
 			var hour:number
 			for (hour = 0; hour <= 24; hour++) {
 				var dayNumber = this.julianDayNumber(this.utcYear, this.utcMonth, this.utcDay, hour)
-				this.barChartData[1].data[hour] = this.sun.elevation(dayNumber, this.dxLongitude, this.dxLatitude, this.earth) 
+				this.barChartData[1].data[hour] = this.moon.elevation(dayNumber, this.dxLongitude, this.dxLatitude, this.sun, this.earth) 
 			}
 			if (this.chart && this.chart.chart){
 			    this.chart.chart.update()

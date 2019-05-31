@@ -554,7 +554,7 @@ export class EmployeeComponent implements OnChanges {
 			}
 			if (this.chart && this.chart.chart){
 			    this.chart.chart.update()
-				console.log(this.locator )
+				console.log(this.dxLocator )
 			}
     
 		}

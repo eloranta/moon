@@ -452,6 +452,7 @@ export class EmployeeComponent implements OnChanges {
   utcDay: number
   utcHour: number
   utcMinutes: number
+  utcSeconds: number
   dayNumber: number
   
   earth: Earth
@@ -465,6 +466,7 @@ export class EmployeeComponent implements OnChanges {
     this.utcDay = now.getUTCDate()
     this.utcHour = now.getUTCHours()
 	this.utcMinutes = now.getUTCMinutes()
+	this.utcSeconds = now.getUTCSeconds()
 	
 	this.earth = new Earth
     this.sun = new Sun
@@ -509,7 +511,7 @@ export class EmployeeComponent implements OnChanges {
 			this.locator = newLocator
 			this.myLatitude = this.observerLatitude(this.locator)
 			this.myLongitude = this.observerLongitude(this.locator)
-			this.dayNumber = this.julianDayNumber(this.utcYear, this.utcMonth, this.utcDay, this.utcHour)
+			this.dayNumber = this.julianDayNumber(this.utcYear, this.utcMonth, this.utcDay, this.utcHour + this.utcMinutes/60. + this.utcSeconds/3600.)
 
 			var hour:number
 			for (hour = 0; hour <= 24; hour++) {

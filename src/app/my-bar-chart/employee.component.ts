@@ -515,7 +515,8 @@ export class EmployeeComponent implements OnChanges {
 			this.myLatitude = this.observerLatitude(this.locator)
 			this.myLongitude = this.observerLongitude(this.locator)
 			this.dayNumber = this.julianDayNumber(this.utcYear, this.utcMonth, this.utcDay, this.utcHour + this.utcMinutes/60. + this.utcSeconds/3600.)
-
+			this.barChartData[0].label = newLocator
+			
 			var hour:number
 			for (hour = 0; hour <= 24; hour++) {
 				var dayNumber = this.julianDayNumber(this.utcYear, this.utcMonth, this.utcDay, hour)
@@ -546,7 +547,8 @@ export class EmployeeComponent implements OnChanges {
 			this.dxLatitude = this.observerLatitude(this.dxLocator)
 			this.dxLongitude = this.observerLongitude(this.dxLocator)
 			this.dayNumber = this.julianDayNumber(this.utcYear, this.utcMonth, this.utcDay, this.utcHour + this.utcMinutes/60. + this.utcSeconds/3600.)
-
+			this.barChartData[1].label = newLocator
+			
 			var hour:number
 			for (hour = 0; hour <= 24; hour++) {
 				var dayNumber = this.julianDayNumber(this.utcYear, this.utcMonth, this.utcDay, hour)

@@ -444,8 +444,11 @@ export class EmployeeComponent implements OnChanges {
   @ViewChild(BaseChartDirective) chart: BaseChartDirective
 
   @Input() locator: string;	
+  @Input() dxLocator: string;	
   myLongitude: number
   myLatitude: number
+  dxLongitude: number
+  dxLatitude: number
 
   utcYear: number
   utcMonth: number
@@ -516,8 +519,38 @@ export class EmployeeComponent implements OnChanges {
 			var hour:number
 			for (hour = 0; hour <= 24; hour++) {
 				var dayNumber = this.julianDayNumber(this.utcYear, this.utcMonth, this.utcDay, hour)
-				this.barChartData[0].data[hour] = this.sun.azimuth(dayNumber, this.myLongitude, this.myLatitude, this.earth)
-				this.barChartData[1].data[hour] = this.sun.elevation(dayNumber, this.myLongitude, this.myLatitude, this.earth) 
+				this.barChartData[0].data[hour] = this.sun.elevation(dayNumber, this.myLongitude, this.myLatitude, this.earth) 
+			}
+			if (this.chart && this.chart.chart){
+			    this.chart.chart.update()
+				console.log(this.locator )
+			}
+    
+		}
+		else if (propName === 'dxLocator') {
+		  var newLocator = changes[propName].currentValue.toLowerCase();
+		  if (newLocator.length != 6) continue
+			if (newLocator[0] < 'a') continue
+			if (newLocator[0] > 'r') continue
+			if (newLocator[1] < 'a') continue
+			if (newLocator[1] > 'r') continue
+			if (newLocator[2] < '0') continue
+			if (newLocator[2] > '9') continue
+			if (newLocator[3] < '0') continue
+			if (newLocator[3] > '9') continue
+			if (newLocator[4] < 'a') continue
+			if (newLocator[4] > 'x') continue
+			if (newLocator[5] < 'a') continue
+			if (newLocator[5] > 'x') continue
+			this.dxLocator = newLocator
+			this.dxLatitude = this.observerLatitude(this.dxLocator)
+			this.dxLongitude = this.observerLongitude(this.dxLocator)
+			this.dayNumber = this.julianDayNumber(this.utcYear, this.utcMonth, this.utcDay, this.utcHour + this.utcMinutes/60. + this.utcSeconds/3600.)
+
+			var hour:number
+			for (hour = 0; hour <= 24; hour++) {
+				var dayNumber = this.julianDayNumber(this.utcYear, this.utcMonth, this.utcDay, hour)
+				this.barChartData[1].data[hour] = this.sun.elevation(dayNumber, this.dxLongitude, this.dxLatitude, this.earth) 
 			}
 			if (this.chart && this.chart.chart){
 			    this.chart.chart.update()

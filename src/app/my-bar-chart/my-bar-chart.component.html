@@ -1,5 +1,9 @@
-<div>
-	<p>My Locator: <input [(ngModel)]="locatora"/></p>
-</div>
-<app-emp [locator]="locatora"></app-emp>
+<span>
+	My Locator:&nbsp;<input [(ngModel)]="locatora"/>
+	&nbsp;
+	Dx Locator:&nbsp;<input [(ngModel)]="locatorb"/>
+</span>
+<br>
+<br>
+<app-emp [locator]="locatora" [dxLocator]="locatorb"></app-emp>
 

@@ -1,8 +1,8 @@
-My Locator: {{locator}}<br>
-My longitude: {{myLongitude.toFixed(2)}}<br>
-My latitude: {{myLatitude.toFixed(2)}}<br>
-Time:{{this.utcYear}}-{{this.utcMonth}}-{{this.utcDay}}&nbsp;{{this.utcHour}}:{{this.utcMinutes}}<br>
-Day number:{{this.dayNumber}}<br>
+<!-- My Locator: {{locator}}<br> -->
+<!-- My longitude: {{myLongitude.toFixed(2)}}<br> -->
+<!-- My latitude: {{myLatitude.toFixed(2)}}<br> -->
+Time:&nbsp;{{this.utcYear}}-{{this.utcMonth}}-{{this.utcDay}}&nbsp;{{this.utcHour}}:{{this.utcMinutes}}<br><br>
+<!-- Day number:{{this.dayNumber}}<br> -->
 Sun:<br>
   <!-- longitudeOfPerihelion:&nbsp;{{this.sun.longitudeOfPerihelion(this.dayNumber)}}<br> -->
   <!-- eccentricity:&nbsp;{{this.sun.eccentricity(this.dayNumber)}}<br> -->
@@ -34,12 +34,16 @@ Sun:<br>
   <!-- yHorizontal:&nbsp;{{this.sun.yHorizontal(this.dayNumber, this.myLongitude, this.myLatitude, this.earth)}}<br> -->
   <!-- zHorizontal:&nbsp;{{this.sun.zHorizontal(this.dayNumber, this.myLongitude, this.myLatitude, this.earth)}}<br> -->
 
-  azimuth:&nbsp;{{this.sun.azimuth(this.dayNumber, this.myLongitude, this.myLatitude, this.earth).toFixed(2)}}<br>
-  elevation:&nbsp;{{this.sun.elevation(this.dayNumber, this.myLongitude, this.myLatitude, this.earth).toFixed(2)}}<br><br>
+  azimuth:&nbsp;{{this.sun.azimuth(this.dayNumber, this.myLongitude, this.myLatitude, this.earth).toFixed(2)}}
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{this.sun.azimuth(this.dayNumber, this.dxLongitude, this.dxLatitude, this.earth).toFixed(2)}}<br>
+  elevation:&nbsp;{{this.sun.elevation(this.dayNumber, this.myLongitude, this.myLatitude, this.earth).toFixed(2)}}
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{this.sun.elevation(this.dayNumber, this.dxLongitude, this.dxLatitude, this.earth).toFixed(2)}}<br><br>
 
 Moon:<br>
-  azimuth:&nbsp;{{this.moon.azimuth(this.dayNumber, this.myLongitude, this.myLatitude, this.sun, this.earth).toFixed(2)}}<br>
+  azimuth:&nbsp;{{this.moon.azimuth(this.dayNumber, this.myLongitude, this.myLatitude, this.sun, this.earth).toFixed(2)}}
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{this.moon.azimuth(this.dayNumber, this.dxLongitude, this.dxLatitude, this.sun, this.earth).toFixed(2)}}<br>
   elevation:&nbsp;{{this.moon.elevation(this.dayNumber, this.myLongitude, this.myLatitude, this.sun, this.earth).toFixed(2)}}
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{this.moon.elevation(this.dayNumber, this.dxLongitude, this.dxLatitude, this.sun, this.earth).toFixed(2)}}
 <div>
   <canvas
       baseChart

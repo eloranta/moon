@@ -496,7 +496,7 @@ export class EmployeeComponent implements OnChanges {
   },
     responsive: true
   }
-  public barChartLabels = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24'];
+  public barChartLabels = ['00:00', '00:30', '01:00', '01:30', '02:00', '02:30', '03:00', '03:30', '04:00', '04:30', '05:00', '05:30', '06:00', '06:30', '07:00', '07:30', '08:00', '08:30', '09:00', '09:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30', '18:00', '18:30', '19:00', '19:30', '20:00', '20:30', '21:00', '21.30', '22:00', '22:30', '23:00', '23:30', '24:00'];
   public barChartData = [
     { data: [0], label: 'Account A' },
     { data: [0], label: 'Account B' },
@@ -527,10 +527,10 @@ export class EmployeeComponent implements OnChanges {
 			this.dayNumber = this.julianDayNumber(this.utcYear, this.utcMonth, this.utcDay, this.utcHour + this.utcMinutes/60. + this.utcSeconds/3600.)
 			this.barChartData[0].label = newLocator
 			
-			var hour:number
-			for (hour = 0; hour <= 24; hour++) {
-				var dayNumber = this.julianDayNumber(this.utcYear, this.utcMonth, this.utcDay, hour)
-				this.barChartData[0].data[hour] = this.moon.elevation(dayNumber, this.myLongitude, this.myLatitude, this.sun, this.earth) 
+			var i:number
+			for (i = 0; i <= 48; i++) {
+				var dayNumber = this.julianDayNumber(this.utcYear, this.utcMonth, this.utcDay, i/2.0)
+				this.barChartData[0].data[i] = this.moon.elevation(dayNumber, this.myLongitude, this.myLatitude, this.sun, this.earth) 
 			}
 			if (this.chart && this.chart.chart){
 			    this.chart.chart.update()
@@ -559,10 +559,9 @@ export class EmployeeComponent implements OnChanges {
 			this.dayNumber = this.julianDayNumber(this.utcYear, this.utcMonth, this.utcDay, this.utcHour + this.utcMinutes/60. + this.utcSeconds/3600.)
 			this.barChartData[1].label = newLocator
 			
-			var hour:number
-			for (hour = 0; hour <= 24; hour++) {
-				var dayNumber = this.julianDayNumber(this.utcYear, this.utcMonth, this.utcDay, hour)
-				this.barChartData[1].data[hour] = this.moon.elevation(dayNumber, this.dxLongitude, this.dxLatitude, this.sun, this.earth) 
+			for (i = 0; i <= 48; i++) {
+				var dayNumber = this.julianDayNumber(this.utcYear, this.utcMonth, this.utcDay, i/2.0)
+				this.barChartData[1].data[i] = this.moon.elevation(dayNumber, this.dxLongitude, this.dxLatitude, this.sun, this.earth) 
 			}
 			if (this.chart && this.chart.chart){
 			    this.chart.chart.update()

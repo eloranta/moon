@@ -477,6 +477,22 @@ export class EmployeeComponent implements OnChanges {
   }
  
   barChartOptions = {
+	  
+        tooltips: {
+            callbacks: {
+                label: function(tooltipItem, data) {
+                    var label = data.datasets[tooltipItem.datasetIndex].label || '';
+
+                    if (label) {
+                        label += ': ';
+                    }
+                    label += Math.round(tooltipItem.yLabel * 100) / 100;
+                    return label;
+                }
+			}
+		},	  
+	  
+	  
   scales: {
     yAxes: [{
 	ticks: {

@@ -488,7 +488,7 @@ export class EmployeeComponent implements OnChanges {
                     }
                     label += Math.round(tooltipItem.yLabel * 100) / 100;
                     return label;
-                }
+                },
 			}
 		},	  
 	  

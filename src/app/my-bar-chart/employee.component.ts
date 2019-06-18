@@ -1,5 +1,6 @@
 import {Component, OnChanges, SimpleChanges, Input, ViewChild} from '@angular/core';
 import { BaseChartDirective } from 'ng2-charts';
+import { NgDatepickerModule } from 'ng2-datepicker';
 
 function div(x, y) {
   return ~~(x / y) // integer division

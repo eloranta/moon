@@ -10,7 +10,7 @@ import { MyPieChartComponent } from './my-pie-chart/my-pie-chart.component';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms'
 import { EmployeeComponent }  from './my-bar-chart/employee.component';
-
+import { NgDatepickerModule } from 'ng2-datepicker';
 
 const routes: Routes = [
   {path: 'bar-chart', component: MyBarChartComponent},
@@ -34,7 +34,8 @@ const routes: Routes = [
     AppRoutingModule,
 	ChartsModule,
 	RouterModule.forRoot(routes),
-	FormsModule
+	FormsModule,
+	NgDatepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -43,6 +43,7 @@
   <!-- /{{this.moon.azimuth(this.dayNumber, this.dxLongitude, this.dxLatitude, this.sun, this.earth).toFixed(1)}}<br> -->
   <!-- elevation:{{this.moon.elevation(this.dayNumber, this.myLongitude, this.myLatitude, this.sun, this.earth).toFixed(1)}} -->
   <!-- /{{this.moon.elevation(this.dayNumber, this.dxLongitude, this.dxLatitude, this.sun, this.earth).toFixed(1)}} -->
+ <ng-datepicker [(ngModel)]="date" name="date" [options]="calendarOptions"></ng-datepicker>
 <div>
   <canvas
       baseChart

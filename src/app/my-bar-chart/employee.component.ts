@@ -462,10 +462,7 @@ export class EmployeeComponent implements OnChanges {
   earth: Earth
   sun: Sun
   moon: Moon
-  
-  date: string = 'Jun 18, 2019';
 
-  
   constructor(){
     let now = new Date()
     this.utcYear = now.getUTCFullYear()

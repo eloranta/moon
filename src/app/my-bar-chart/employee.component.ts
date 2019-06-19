@@ -521,6 +521,9 @@ export class EmployeeComponent implements OnChanges {
   ]
   
   ngOnChanges(changes: SimpleChanges) {
+    this.utcYear = this.date.getUTCFullYear()
+    this.utcMonth = this.date.getUTCMonth() + 1
+    this.utcDay = this.date.getUTCDate()
 	  
 	for (let propName in changes) {  
 		

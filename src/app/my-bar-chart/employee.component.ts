@@ -451,7 +451,6 @@ export class EmployeeComponent implements OnChanges {
   dxLongitude: number
   dxLatitude: number
 
-  date: Date = new Date()
   utcYear: number
   utcMonth: number
   utcDay: number

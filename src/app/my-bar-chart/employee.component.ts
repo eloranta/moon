@@ -451,6 +451,7 @@ export class EmployeeComponent implements OnChanges {
   dxLongitude: number
   dxLatitude: number
 
+  date: Date = new Date()
   utcYear: number
   utcMonth: number
   utcDay: number
@@ -523,6 +524,9 @@ export class EmployeeComponent implements OnChanges {
   ]
   
   ngOnChanges(changes: SimpleChanges) {
+    this.utcYear = this.date.getUTCFullYear()
+    this.utcMonth = this.date.getUTCMonth() + 1
+    this.utcDay = this.date.getUTCDate()
 	  
 	for (let propName in changes) {  
 		

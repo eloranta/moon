@@ -479,6 +479,10 @@ export class EmployeeComponent implements OnChanges {
     this.moon = new Moon
 	
 	this.date = new Date()
+	this.utcYear = this.date.getUTCFullYear()
+	this.utcMonth = this.date.getUTCMonth() + 1
+	this.utcDay = this.date.getUTCDate()
+
   }
  
   barChartOptions = {
@@ -524,19 +528,29 @@ export class EmployeeComponent implements OnChanges {
   ]
   
 	onDateChange(date: Date) {
-		console.log(date)
+		this.utcYear = date.getUTCFullYear()
+		this.utcMonth = date.getUTCMonth() + 1
+		this.utcDay = date.getUTCDate()
+		
+		var i:number
+		for (i = 0; i <= 48; i++) {
+			var dayNumber = this.julianDayNumber(this.utcYear, this.utcMonth, this.utcDay, i/2.0)
+			this.barChartData[0].data[i] = this.moon.elevation(dayNumber, this.myLongitude, this.myLatitude, this.sun, this.earth)
+			this.barChartData[1].data[i] = this.moon.elevation(dayNumber, this.dxLongitude, this.dxLatitude, this.sun, this.earth) 
+		}
+		if (this.chart && this.chart.chart){
+			this.chart.chart.update()
+			console.log(this.locator )
+		}
 	}
 
     ngOnChanges(changes: SimpleChanges) {
-    this.utcYear = this.date.getUTCFullYear()
-    this.utcMonth = this.date.getUTCMonth() + 1
-    this.utcDay = this.date.getUTCDate()
 	  
 	for (let propName in changes) {  
 		
 		if (propName === 'locator') {
 		    var newLocator = changes[propName].currentValue.toLowerCase();
-		if (newLocator.length != 6) continue
+			if (newLocator.length != 6) continue
 			if (newLocator[0] < 'a') continue
 			if (newLocator[0] > 'r') continue
 			if (newLocator[1] < 'a') continue
@@ -552,7 +566,6 @@ export class EmployeeComponent implements OnChanges {
 			this.locator = newLocator
 			this.myLatitude = this.observerLatitude(this.locator)
 			this.myLongitude = this.observerLongitude(this.locator)
-			this.dayNumber = this.julianDayNumber(this.utcYear, this.utcMonth, this.utcDay, this.utcHour + this.utcMinutes/60. + this.utcSeconds/3600.)
 			this.barChartData[0].label = newLocator
 			
 			var i:number
@@ -564,11 +577,10 @@ export class EmployeeComponent implements OnChanges {
 			    this.chart.chart.update()
 				console.log(this.locator )
 			}
-    
-		}
+ 		}
 		else if (propName === 'dxLocator') {
-		  var newLocator = changes[propName].currentValue.toLowerCase();
-		  if (newLocator.length != 6) continue
+			var newLocator = changes[propName].currentValue.toLowerCase();
+			if (newLocator.length != 6) continue
 			if (newLocator[0] < 'a') continue
 			if (newLocator[0] > 'r') continue
 			if (newLocator[1] < 'a') continue
@@ -584,7 +596,6 @@ export class EmployeeComponent implements OnChanges {
 			this.dxLocator = newLocator
 			this.dxLatitude = this.observerLatitude(this.dxLocator)
 			this.dxLongitude = this.observerLongitude(this.dxLocator)
-			this.dayNumber = this.julianDayNumber(this.utcYear, this.utcMonth, this.utcDay, this.utcHour + this.utcMinutes/60. + this.utcSeconds/3600.)
 			this.barChartData[1].label = newLocator
 			
 			for (i = 0; i <= 48; i++) {
@@ -595,10 +606,10 @@ export class EmployeeComponent implements OnChanges {
 			    this.chart.chart.update()
 				console.log(this.dxLocator )
 			}
-    
 		}
     }
   }
+  
   observerLongitude(locator) {
     locator = locator.toUpperCase()
     let field = 20 * (locator.charCodeAt(0) - 65) - 180

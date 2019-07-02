@@ -462,6 +462,7 @@ export class EmployeeComponent implements OnChanges {
   earth: Earth
   sun: Sun
   moon: Moon
+  date: Date
 
   constructor(){
     let now = new Date()
@@ -475,6 +476,8 @@ export class EmployeeComponent implements OnChanges {
 	this.earth = new Earth
     this.sun = new Sun
     this.moon = new Moon
+	
+	this.date = new Date()
   }
  
   barChartOptions = {

@@ -462,7 +462,8 @@ export class EmployeeComponent implements OnChanges {
   earth: Earth
   sun: Sun
   moon: Moon
-  @Input() date: Date
+  
+  date: Date
 
   constructor(){
     let now = new Date()
@@ -523,7 +524,7 @@ export class EmployeeComponent implements OnChanges {
   ]
   
 	onDateChange(date: Date) {
-		console.log(this.date)
+		console.log(date)
 	}
 
     ngOnChanges(changes: SimpleChanges) {

@@ -466,14 +466,6 @@ export class EmployeeComponent implements OnChanges {
   date: Date
 
   constructor(){
-    let now = new Date()
-    this.utcYear = now.getUTCFullYear()
-    this.utcMonth = now.getUTCMonth() + 1
-    this.utcDay = now.getUTCDate()
-    this.utcHour = now.getUTCHours()
-	this.utcMinutes = now.getUTCMinutes()
-	this.utcSeconds = now.getUTCSeconds()
-	
 	this.earth = new Earth
     this.sun = new Sun
     this.moon = new Moon
@@ -482,7 +474,11 @@ export class EmployeeComponent implements OnChanges {
 	this.utcYear = this.date.getUTCFullYear()
 	this.utcMonth = this.date.getUTCMonth() + 1
 	this.utcDay = this.date.getUTCDate()
-
+	this.utcHour = this.date.getUTCHours()
+	this.utcMinutes = this.date.getUTCMinutes()
+	this.utcSeconds = this.date.getUTCSeconds()
+	
+	this.dayNumber = this.julianDayNumber(this.utcYear, this.utcMonth, this.utcDay, this.utcHour + this.utcMinutes / 60.0 + this.utcSeconds / 3600.0)
   }
  
   barChartOptions = {
@@ -540,7 +536,6 @@ export class EmployeeComponent implements OnChanges {
 		}
 		if (this.chart && this.chart.chart){
 			this.chart.chart.update()
-			console.log(this.locator )
 		}
 	}
 
@@ -575,7 +570,6 @@ export class EmployeeComponent implements OnChanges {
 			}
 			if (this.chart && this.chart.chart){
 			    this.chart.chart.update()
-				console.log(this.locator )
 			}
  		}
 		else if (propName === 'dxLocator') {
@@ -604,7 +598,6 @@ export class EmployeeComponent implements OnChanges {
 			}
 			if (this.chart && this.chart.chart){
 			    this.chart.chart.update()
-				console.log(this.dxLocator )
 			}
 		}
     }

@@ -7,7 +7,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 })
 export class MyBarChartComponent{
   locatora: string = 'kp11mk';
-  locatorb: string = 'ap11mk';
+  locatorb: string = '';
 
   constructor(){
 

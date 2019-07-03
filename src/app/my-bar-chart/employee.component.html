@@ -43,6 +43,7 @@
   <!-- /{{this.moon.azimuth(this.dayNumber, this.dxLongitude, this.dxLatitude, this.sun, this.earth).toFixed(1)}}<br> -->
   <!-- elevation:{{this.moon.elevation(this.dayNumber, this.myLongitude, this.myLatitude, this.sun, this.earth).toFixed(1)}} -->
   <!-- /{{this.moon.elevation(this.dayNumber, this.dxLongitude, this.dxLatitude, this.sun, this.earth).toFixed(1)}} -->
+ 
  Date:<ng-datepicker [(ngModel)]="date" (ngModelChange)="onDateChange($event)" name="date" [options]="{
  minYear: 2019,
  maxYear: 2050,
@@ -56,6 +57,7 @@
  placeholder: 'Click to select a date',
  useEmptyBarTitle: false
  } "></ng-datepicker>
+ 
 <div>
   <canvas
       baseChart

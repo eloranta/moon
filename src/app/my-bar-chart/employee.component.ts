@@ -524,9 +524,10 @@ export class EmployeeComponent implements OnChanges {
   ]
   
 	onDateChange(date: Date) {
-		this.utcYear = date.getUTCFullYear()
-		this.utcMonth = date.getUTCMonth() + 1
-		this.utcDay = date.getUTCDate()
+		this.utcYear = date.getFullYear()
+		this.utcMonth = date.getMonth() + 1
+		this.utcDay = date.getDate()
+console.log(this.utcYear, this.utcMonth, this.utcDay);
 		
 		var i:number
 		for (i = 0; i <= 48; i++) {
@@ -544,6 +545,7 @@ export class EmployeeComponent implements OnChanges {
 	for (let propName in changes) {  
 		
 		if (propName === 'locator') {
+console.log(this.utcYear, this.utcMonth, this.utcDay);
 		    var newLocator = changes[propName].currentValue.toLowerCase();
 			if (newLocator.length != 6) continue
 			if (newLocator[0] < 'a') continue

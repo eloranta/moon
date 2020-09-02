@@ -9,7 +9,7 @@ import { MyRadarChartComponent } from './my-radar-chart/my-radar-chart.component
 import { MyPieChartComponent } from './my-pie-chart/my-pie-chart.component';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms'
-import { EmployeeComponent }  from './my-bar-chart/employee.component';
+import { MoonComponent }  from './my-bar-chart/moon.component';
 import { NgDatepickerModule } from 'ng2-datepicker';
 
 const routes: Routes = [
@@ -27,7 +27,7 @@ const routes: Routes = [
     MyDoughnutChartComponent,
     MyRadarChartComponent,
     MyPieChartComponent,
-	EmployeeComponent
+	MoonComponent
   ],
   imports: [
     BrowserModule,

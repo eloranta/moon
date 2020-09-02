@@ -439,9 +439,9 @@ class Moon {
 
 @Component({
   selector: 'app-emp',
-  templateUrl: './employee.component.html'
+  templateUrl: './moon.component.html'
 })
-export class EmployeeComponent implements OnChanges {
+export class MoonComponent implements OnChanges {
   @ViewChild(BaseChartDirective) chart: BaseChartDirective
 
   @Input() locator: string;	

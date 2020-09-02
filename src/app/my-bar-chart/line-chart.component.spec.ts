@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MyRadarChartComponent } from './my-radar-chart.component';
+import { MyBarChartComponent } from './my-bar-chart.component';
 
-describe('MyRadarChartComponent', () => {
-  let component: MyRadarChartComponent;
-  let fixture: ComponentFixture<MyRadarChartComponent>;
+describe('MyBarChartComponent', () => {
+  let component: MyBarChartComponent;
+  let fixture: ComponentFixture<MyBarChartComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MyRadarChartComponent ]
+      declarations: [ MyBarChartComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MyRadarChartComponent);
+    fixture = TestBed.createComponent(MyBarChartComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

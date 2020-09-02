@@ -3,10 +3,10 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ChartsModule } from 'ng2-charts';
-import { MyBarChartComponent } from './my-bar-chart/line-chart.component';
+import { MyBarChartComponent } from './line-chart/line-chart.component';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms'
-import { MoonComponent }  from './my-bar-chart/moon.component';
+import { MoonComponent }  from './line-chart/moon.component';
 import { NgDatepickerModule } from 'ng2-datepicker';
 
 const routes: Routes = [

@@ -446,6 +446,7 @@ export class MoonComponent implements OnChanges {
 
   @Input() locator: string;	
   @Input() dxLocator: string;	
+  
   myLongitude: number
   myLatitude: number
   dxLongitude: number
@@ -620,6 +621,7 @@ console.log(this.utcYear, this.utcMonth, this.utcDay);
     let subGrid = 2.5 * (locator.charCodeAt(5) - 65) / 60
     return field + grid + subGrid + 1/48
   }
+  
   julianDayNumber(year, month, day, hour) {
     return 367 * year - div((7 * (year + (div((month + 9), 12)))), 4) + div((275 * month), 9) + day - 730530 + hour / 24.0
   }

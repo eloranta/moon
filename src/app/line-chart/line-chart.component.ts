@@ -6,7 +6,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
   templateUrl: './line-chart.component.html',
   styleUrls: ['./line-chart.component.css']
 })
-export class MyBarChartComponent{
+export class LineChartComponent{
   locatora: string = 'kp11mk';
   locatorb: string = '';
 

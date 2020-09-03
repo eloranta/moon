@@ -520,8 +520,8 @@ export class MoonComponent implements OnChanges {
 
   public barChartLabels = ['00:00', '00:30', '01:00', '01:30', '02:00', '02:30', '03:00', '03:30', '04:00', '04:30', '05:00', '05:30', '06:00', '06:30', '07:00', '07:30', '08:00', '08:30', '09:00', '09:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30', '18:00', '18:30', '19:00', '19:30', '20:00', '20:30', '21:00', '21.30', '22:00', '22:30', '23:00', '23:30', '24:00'];
   public barChartData = [
-    { data: [0], label: 'My locator' },
-    { data: [0], label: 'DX locator' },
+    { data: [null], label: 'My locator' },
+    { data: [null], label: 'DX locator' },
   ]
   
   onDateChange(date: Date) {
@@ -540,25 +540,46 @@ export class MoonComponent implements OnChanges {
     }
   }
 
+  removeLine(index: number){
+    var i:number
+    for (i = 0; i <= 48; i++) {
+      this.barChartData[index].data[i] = null;
+    }
+    var label;
+    if (index == 0)
+      label = "My locator"
+    else
+      label = "DX locator"
+      
+    this.barChartData[index].label = label;
+ 
+    if (this.chart && this.chart.chart){
+      this.chart.chart.update()
+    }
+  }
+
   ngOnChanges(changes: SimpleChanges) {
 
     for (let propName in changes) {  
 
       if (propName === 'locator') {
         var newLocator = changes[propName].currentValue.toLowerCase();
-        if (newLocator.length != 6) continue
-        if (newLocator[0] < 'a') continue
-        if (newLocator[0] > 'r') continue
-        if (newLocator[1] < 'a') continue
-        if (newLocator[1] > 'r') continue
-        if (newLocator[2] < '0') continue
-        if (newLocator[2] > '9') continue
-        if (newLocator[3] < '0') continue
-        if (newLocator[3] > '9') continue
-        if (newLocator[4] < 'a') continue
-        if (newLocator[4] > 'x') continue
-        if (newLocator[5] < 'a') continue
-        if (newLocator[5] > 'x') continue
+        if (newLocator.length != 6 ||
+          newLocator[0] < 'a'    ||
+          newLocator[0] > 'r'    ||
+          newLocator[1] < 'a'    ||
+          newLocator[1] > 'r'    ||
+          newLocator[2] < '0'    ||
+          newLocator[2] > '9'    ||
+          newLocator[3] < '0'    ||
+          newLocator[3] > '9'    ||
+          newLocator[4] < 'a'    ||
+          newLocator[4] > 'x'    ||
+          newLocator[5] < 'a'    ||
+          newLocator[5] > 'x'){
+           this.removeLine(0);
+            continue
+        }
         this.locator = newLocator
         this.myLatitude = this.observerLatitude(this.locator)
         this.myLongitude = this.observerLongitude(this.locator)
@@ -575,19 +596,22 @@ export class MoonComponent implements OnChanges {
     }
       else if (propName === 'dxLocator') {
         var newLocator = changes[propName].currentValue.toLowerCase();
-        if (newLocator.length != 6) continue
-        if (newLocator[0] < 'a') continue
-        if (newLocator[0] > 'r') continue
-        if (newLocator[1] < 'a') continue
-        if (newLocator[1] > 'r') continue
-        if (newLocator[2] < '0') continue
-        if (newLocator[2] > '9') continue
-        if (newLocator[3] < '0') continue
-        if (newLocator[3] > '9') continue
-        if (newLocator[4] < 'a') continue
-        if (newLocator[4] > 'x') continue
-        if (newLocator[5] < 'a') continue
-        if (newLocator[5] > 'x') continue
+        if (newLocator.length != 6 ||
+          newLocator[0] < 'a'    ||
+          newLocator[0] > 'r'    ||
+          newLocator[1] < 'a'    ||
+          newLocator[1] > 'r'    ||
+          newLocator[2] < '0'    ||
+          newLocator[2] > '9'    ||
+          newLocator[3] < '0'    ||
+          newLocator[3] > '9'    ||
+          newLocator[4] < 'a'    ||
+          newLocator[4] > 'x'    ||
+          newLocator[5] < 'a'    ||
+          newLocator[5] > 'x'){
+           this.removeLine(1);
+            continue
+        }
         this.dxLocator = newLocator
         this.dxLatitude = this.observerLatitude(this.dxLocator)
         this.dxLongitude = this.observerLongitude(this.dxLocator)

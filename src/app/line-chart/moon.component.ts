@@ -438,7 +438,7 @@ class Moon {
 }
 
 @Component({
-  selector: 'app-emp',
+  selector: 'app-moon',
   templateUrl: './moon.component.html'
 })
 export class MoonComponent implements OnChanges {

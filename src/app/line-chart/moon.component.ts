@@ -532,8 +532,10 @@ export class MoonComponent implements OnChanges {
     var i:number
     for (i = 0; i <= 48; i++) {
       var dayNumber = this.julianDayNumber(this.utcYear, this.utcMonth, this.utcDay, i/2.0)
-      this.barChartData[0].data[i] = this.moon.elevation(dayNumber, this.myLongitude, this.myLatitude, this.sun, this.earth)
-      this.barChartData[1].data[i] = this.moon.elevation(dayNumber, this.dxLongitude, this.dxLatitude, this.sun, this.earth) 
+      if (this.barChartData[0].data[0])
+        this.barChartData[0].data[i] = this.moon.elevation(dayNumber, this.myLongitude, this.myLatitude, this.sun, this.earth)
+      if (this.barChartData[1].data[0])
+        this.barChartData[1].data[i] = this.moon.elevation(dayNumber, this.dxLongitude, this.dxLatitude, this.sun, this.earth) 
     }
     if (this.chart && this.chart.chart){
       this.chart.chart.update()

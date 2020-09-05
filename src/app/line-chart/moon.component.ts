@@ -1,6 +1,6 @@
-import {Component, OnChanges, SimpleChanges, Input, ViewChild} from '@angular/core';
-import { BaseChartDirective } from 'ng2-charts';
-import { NgDatepickerModule } from 'ng2-datepicker';
+import {Component, OnChanges, SimpleChanges, Input, ViewChild} from '@angular/core'
+import { BaseChartDirective } from 'ng2-charts'
+import { NgDatepickerModule } from 'ng2-datepicker'
 
 function div(x, y) {
   return ~~(x / y) // integer division
@@ -226,7 +226,7 @@ class Moon {
   }
   
   y(dayNumber) {
-    let e = this.eccentricity;
+    let e = this.eccentricity
     return this.meanDistance * Math.sqrt(1 - e * e) * sin(this.E(dayNumber))
   }
 
@@ -243,10 +243,10 @@ class Moon {
   }
 
   xeclip(dayNumber) {
-    let N = this.longitudeOfAscendingNode(dayNumber);
-    let v = this.v(dayNumber);
-    let w = this.argumentOfPerigee(dayNumber);
-    return this.r(dayNumber) * (cos(N) * cos(v + w) - sin(N) * sin(v + w) * cos(this.inclination));
+    let N = this.longitudeOfAscendingNode(dayNumber)
+    let v = this.v(dayNumber)
+    let w = this.argumentOfPerigee(dayNumber)
+    return this.r(dayNumber) * (cos(N) * cos(v + w) - sin(N) * sin(v + w) * cos(this.inclination))
   }
 
   yeclip(dayNumber) {
@@ -323,7 +323,7 @@ class Moon {
 
   longitude = function(dayNumber, sun) {
     return this.longitudeEcl(dayNumber) + this.dLongitude(dayNumber, sun)
-  };
+  }
 
   latitude(dayNumber, sun) {
     return this.latitudeEcl(dayNumber) + this.dLatitude(dayNumber, sun)
@@ -444,8 +444,8 @@ class Moon {
 export class MoonComponent implements OnChanges {
   @ViewChild(BaseChartDirective) chart: BaseChartDirective
 
-  @Input() locator: string;	
-  @Input() dxLocator: string;	
+  @Input() locator: string
+  @Input() dxLocator: string
 
   myLongitude: number
   myLatitude: number
@@ -487,13 +487,13 @@ export class MoonComponent implements OnChanges {
     tooltips: {
       callbacks: {
         label: function(tooltipItem, data) {
-          var label = data.datasets[tooltipItem.datasetIndex].label || '';
+          var label = data.datasets[tooltipItem.datasetIndex].label || ''
 
           if (label) {
-            label += ': ';
+            label += ': '
           }
-          label += Math.round(tooltipItem.yLabel * 10) / 10;
-          return label;
+          label += Math.round(tooltipItem.yLabel * 10) / 10
+          return label
         },
       }
     },  
@@ -518,12 +518,12 @@ export class MoonComponent implements OnChanges {
       responsive: true
   }
 
-  public barChartLabels = ['00:00', '00:30', '01:00', '01:30', '02:00', '02:30', '03:00', '03:30', '04:00', '04:30', '05:00', '05:30', '06:00', '06:30', '07:00', '07:30', '08:00', '08:30', '09:00', '09:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30', '18:00', '18:30', '19:00', '19:30', '20:00', '20:30', '21:00', '21.30', '22:00', '22:30', '23:00', '23:30', '24:00'];
+  public barChartLabels = ['00:00', '00:30', '01:00', '01:30', '02:00', '02:30', '03:00', '03:30', '04:00', '04:30', '05:00', '05:30', '06:00', '06:30', '07:00', '07:30', '08:00', '08:30', '09:00', '09:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30', '18:00', '18:30', '19:00', '19:30', '20:00', '20:30', '21:00', '21.30', '22:00', '22:30', '23:00', '23:30', '24:00']
   public barChartData = [
     { data: [null], label: 'My locator' },
     { data: [null], label: 'DX locator' },
   ]
-  
+
   onDateChange(date: Date) {
     this.utcYear = date.getFullYear()
     this.utcMonth = date.getMonth() + 1
@@ -545,15 +545,15 @@ export class MoonComponent implements OnChanges {
   removeLine(index: number){
     var i:number
     for (i = 0; i <= 48; i++) {
-      this.barChartData[index].data[i] = null;
+      this.barChartData[index].data[i] = null
     }
-    var label;
+    var label
     if (index == 0)
       label = "My locator"
     else
       label = "DX locator"
       
-    this.barChartData[index].label = label;
+    this.barChartData[index].label = label
  
     if (this.chart && this.chart.chart){
       this.chart.chart.update()
@@ -565,7 +565,7 @@ export class MoonComponent implements OnChanges {
     for (let propName in changes) {  
 
       if (propName === 'locator') {
-        var newLocator = changes[propName].currentValue.toLowerCase();
+        var newLocator = changes[propName].currentValue.toLowerCase()
         if (newLocator.length != 6 ||
           newLocator[0] < 'a'    ||
           newLocator[0] > 'r'    ||
@@ -579,7 +579,7 @@ export class MoonComponent implements OnChanges {
           newLocator[4] > 'x'    ||
           newLocator[5] < 'a'    ||
           newLocator[5] > 'x'){
-           this.removeLine(0);
+           this.removeLine(0)
             continue
         }
         this.locator = newLocator
@@ -597,7 +597,7 @@ export class MoonComponent implements OnChanges {
         }
     }
       else if (propName === 'dxLocator') {
-        var newLocator = changes[propName].currentValue.toLowerCase();
+        var newLocator = changes[propName].currentValue.toLowerCase()
         if (newLocator.length != 6 ||
           newLocator[0] < 'a'    ||
           newLocator[0] > 'r'    ||
@@ -611,7 +611,7 @@ export class MoonComponent implements OnChanges {
           newLocator[4] > 'x'    ||
           newLocator[5] < 'a'    ||
           newLocator[5] > 'x'){
-           this.removeLine(1);
+           this.removeLine(1)
             continue
         }
         this.dxLocator = newLocator

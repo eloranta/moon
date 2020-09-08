@@ -524,109 +524,84 @@ export class MoonComponent implements OnChanges {
     { data: [null], label: 'DX locator' },
   ]
 
-  onDateChange(date: Date) {
-    this.utcYear = date.getFullYear()
-    this.utcMonth = date.getMonth() + 1
-    this.utcDay = date.getDate()
-
-    var i:number
-    for (i = 0; i <= 48; i++) {
-      var dayNumber = this.julianDayNumber(this.utcYear, this.utcMonth, this.utcDay, i/2.0)
-      if (this.barChartData[0].data[0])
-        this.barChartData[0].data[i] = this.moon.elevation(dayNumber, this.myLongitude, this.myLatitude, this.sun, this.earth)
-      if (this.barChartData[1].data[0])
-        this.barChartData[1].data[i] = this.moon.elevation(dayNumber, this.dxLongitude, this.dxLatitude, this.sun, this.earth) 
-    }
-    if (this.chart && this.chart.chart){
-      this.chart.chart.update()
-    }
+  isLocatorValid(locator: string){
+    var loc = locator.toLowerCase()
+    if (loc.length != 6 ||
+      loc[0] < 'a'      ||
+      loc[0] > 'r'      ||
+      loc[1] < 'a'      ||
+      loc[1] > 'r'      ||
+      loc[2] < '0'      ||
+      loc[2] > '9'      ||
+      loc[3] < '0'      ||
+      loc[3] > '9'      ||
+      loc[4] < 'a'      ||
+      loc[4] > 'x'      ||
+      loc[5] < 'a'      ||
+      loc[5] > 'x')
+        return false
+    return true
   }
 
-  removeLine(index: number){
-    var i:number
-    for (i = 0; i <= 48; i++) {
-      this.barChartData[index].data[i] = null
-    }
-    var label
-    if (index == 0)
-      label = "My locator"
-    else
-      label = "DX locator"
+  update(){
+    this.utcYear = this.date.getFullYear()
+    this.utcMonth = this.date.getMonth() + 1
+    this.utcDay = this.date.getDate()
+
+    if (this.isLocatorValid(this.locator)){
+      this.myLatitude = this.observerLatitude(this.locator)
+      this.myLongitude = this.observerLongitude(this.locator)
       
-    this.barChartData[index].label = label
- 
+      var i:number
+      for (i = 0; i <= 48; i++) {
+        var dayNumber = this.julianDayNumber(this.utcYear, this.utcMonth, this.utcDay, i/2.0)
+        this.barChartData[0].data[i] = this.moon.elevation(dayNumber, this.myLongitude, this.myLatitude, this.sun, this.earth)
+       }
+      this.barChartData[0].label = this.locator
+    }
+    else{
+      var i:number
+      for (i = 0; i <= 48; i++) {
+        this.barChartData[0].data[i] = null
+      }
+      this.barChartData[0].label = 'My locator'
+    }
+    
+    if (this.isLocatorValid(this.dxLocator)){
+      this.dxLatitude = this.observerLongitude(this.dxLocator)
+      this.dxLongitude = this.observerLongitude(this.dxLocator)
+      
+      var i:number
+      for (i = 0; i <= 48; i++) {
+        var dayNumber = this.julianDayNumber(this.utcYear, this.utcMonth, this.utcDay, i/2.0)
+        this.barChartData[1].data[i] = this.moon.elevation(dayNumber, this.dxLongitude, this.dxLatitude, this.sun, this.earth)
+      }
+      this.barChartData[1].label = this.dxLocator
+    }
+    else{
+      var i:number
+      for (i = 0; i <= 48; i++) {
+        this.barChartData[1].data[i] = null
+      }
+      this.barChartData[1].label = 'DX locator'
+    }
+
     if (this.chart && this.chart.chart){
       this.chart.chart.update()
     }
-  }
+  } 
 
+  onDateChange(date: Date) {
+    this.date = date
+    this.update()
+  }
+  
   ngOnChanges(changes: SimpleChanges) {
 
     for (let propName in changes) {  
 
-      if (propName === 'locator') {
-        var newLocator = changes[propName].currentValue.toLowerCase()
-        if (newLocator.length != 6 ||
-          newLocator[0] < 'a'    ||
-          newLocator[0] > 'r'    ||
-          newLocator[1] < 'a'    ||
-          newLocator[1] > 'r'    ||
-          newLocator[2] < '0'    ||
-          newLocator[2] > '9'    ||
-          newLocator[3] < '0'    ||
-          newLocator[3] > '9'    ||
-          newLocator[4] < 'a'    ||
-          newLocator[4] > 'x'    ||
-          newLocator[5] < 'a'    ||
-          newLocator[5] > 'x'){
-           this.removeLine(0)
-            continue
-        }
-        this.locator = newLocator
-        this.myLatitude = this.observerLatitude(this.locator)
-        this.myLongitude = this.observerLongitude(this.locator)
-        this.barChartData[0].label = newLocator
-        
-        var i:number
-        for (i = 0; i <= 48; i++) {
-          var dayNumber = this.julianDayNumber(this.utcYear, this.utcMonth, this.utcDay, i/2.0)
-          this.barChartData[0].data[i] = this.moon.elevation(dayNumber, this.myLongitude, this.myLatitude, this.sun, this.earth)
-        }
-        if (this.chart && this.chart.chart){
-            this.chart.chart.update()
-        }
-    }
-      else if (propName === 'dxLocator') {
-        var newLocator = changes[propName].currentValue.toLowerCase()
-        if (newLocator.length != 6 ||
-          newLocator[0] < 'a'    ||
-          newLocator[0] > 'r'    ||
-          newLocator[1] < 'a'    ||
-          newLocator[1] > 'r'    ||
-          newLocator[2] < '0'    ||
-          newLocator[2] > '9'    ||
-          newLocator[3] < '0'    ||
-          newLocator[3] > '9'    ||
-          newLocator[4] < 'a'    ||
-          newLocator[4] > 'x'    ||
-          newLocator[5] < 'a'    ||
-          newLocator[5] > 'x'){
-           this.removeLine(1)
-            continue
-        }
-        this.dxLocator = newLocator
-        this.dxLatitude = this.observerLatitude(this.dxLocator)
-        this.dxLongitude = this.observerLongitude(this.dxLocator)
-        this.barChartData[1].label = newLocator
-        
-        for (i = 0; i <= 48; i++) {
-          var dayNumber = this.julianDayNumber(this.utcYear, this.utcMonth, this.utcDay, i/2.0)
-          this.barChartData[1].data[i] = this.moon.elevation(dayNumber, this.dxLongitude, this.dxLatitude, this.sun, this.earth) 
-        }
-        if (this.chart && this.chart.chart){
-            this.chart.chart.update()
-        }
-      }
+      if (propName === 'locator' || propName === 'dxLocator')
+        this.update()
     }
   }
 

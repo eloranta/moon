@@ -568,7 +568,7 @@ export class MoonComponent implements OnChanges {
     }
     
     if (this.isLocatorValid(this.dxLocator)){
-      this.dxLatitude = this.observerLongitude(this.dxLocator)
+      this.dxLatitude = this.observerLatitude(this.dxLocator)
       this.dxLongitude = this.observerLongitude(this.dxLocator)
       
       var i:number

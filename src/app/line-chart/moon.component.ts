@@ -1,6 +1,7 @@
 import {Component, OnChanges, SimpleChanges, Input, ViewChild} from '@angular/core'
 import { BaseChartDirective } from 'ng2-charts'
 import { NgDatepickerModule } from 'ng2-datepicker'
+import { setCookie, getCookie} from './cookies'
 
 function div(x, y) {
   return ~~(x / y) // integer division
@@ -549,6 +550,9 @@ export class MoonComponent implements OnChanges {
     this.utcDay = this.date.getDate()
 
     if (this.isLocatorValid(this.locator)){
+      
+      setCookie("mylocator", this.locator)
+      
       this.myLatitude = this.observerLatitude(this.locator)
       this.myLongitude = this.observerLongitude(this.locator)
       

@@ -8,7 +8,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 })
 
 export class LineChartComponent{
-  locatora: string = 'kp11mk'
+  locatora: string = localStorage.getItem('myLocator');
   locatorb: string = ''
 
   constructor(){

@@ -550,6 +550,8 @@ export class MoonComponent implements OnChanges {
 
     if (this.isLocatorValid(this.locator)){
       
+      localStorage.setItem('myLocator', this.locator);
+      
       this.myLatitude = this.observerLatitude(this.locator)
       this.myLongitude = this.observerLongitude(this.locator)
       

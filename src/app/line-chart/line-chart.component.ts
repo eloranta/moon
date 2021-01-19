@@ -1,6 +1,5 @@
 import { BaseChartDirective } from 'ng2-charts';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { getCookie} from './cookies'
 
 @Component({
   selector: 'app-line-chart',
@@ -9,7 +8,7 @@ import { getCookie} from './cookies'
 })
 
 export class LineChartComponent{
-  locatora: string = getCookie("mylocator")
+  locatora: string = 'kp11mk'
   locatorb: string = ''
 
   constructor(){

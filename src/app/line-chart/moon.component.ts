@@ -486,18 +486,22 @@ export class MoonComponent implements OnChanges {
 
     tooltips: {
       displayColors: false,
+      
       callbacks: {
-        title: function(tooltipItems, data) {
+        beforeTitle: function(tooltipItems, data) {
            return 'UTC ' + tooltipItems[0].xLabel
         },
-        afterTitle: function(tooltipItems, data) {
+        title: function(tooltipItems, data) {
            return 'Moon:'
         },
-        label: function(tooltipItem, data) {
-          return 'Elevation ' + Math.round(tooltipItem.yLabel * 10) / 10
+        afterTitle: function(tooltipItems, data) {
+          return 'Elevation ' + Math.round(tooltipItems[0].yLabel * 10) / 10
         },
-        footer: function (tooltipItem, data) {
-          return 'Azimuth  ' + Math.round(data.datasets[0].azimuth[tooltipItem[0].index]) / 10;
+        beforeBody: function (tooltipItems, data) {
+          return 'Azimuth    ' + Math.round(data.datasets[0].azimuth[tooltipItems[0].index]) / 10
+        },
+        label: function(tooltipItem, data) {
+          return ''
         },
       }
     },  

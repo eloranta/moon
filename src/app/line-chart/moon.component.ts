@@ -498,7 +498,8 @@ export class MoonComponent implements OnChanges {
           return 'Elevation ' + Math.round(tooltipItems[0].yLabel * 10) / 10
         },
         beforeBody: function (tooltipItems, data) {
-          return 'Azimuth    ' + Math.round(data.datasets[0].azimuth[tooltipItems[0].index]) / 10
+          console.log();
+          return 'Azimuth    ' + Math.round(data.datasets[0].azimuth[tooltipItems[0].index] * 10) / 10
         },
         label: function(tooltipItem, data) {
           return ''

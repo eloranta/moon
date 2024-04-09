@@ -570,7 +570,7 @@ export class MoonComponent implements OnChanges {
         this.barChartData[0].data[i] = this.moon.elevation(dayNumber, this.myLongitude, this.myLatitude, this.sun, this.earth)
         this.barChartData[0].azimuth[i] = this.moon.azimuth(dayNumber, this.myLongitude, this.myLatitude, this.sun, this.earth)
        }
-      this.barChartData[0].label = this.locator
+      this.barChartData[0].label = this.locator.toUpperCase()
     }
     else{
       var i:number
@@ -589,7 +589,7 @@ export class MoonComponent implements OnChanges {
         var dayNumber = this.julianDayNumber(this.utcYear, this.utcMonth, this.utcDay, i/2.0)
         this.barChartData[1].data[i] = this.moon.elevation(dayNumber, this.dxLongitude, this.dxLatitude, this.sun, this.earth)
       }
-      this.barChartData[1].label = this.dxLocator
+      this.barChartData[1].label = this.dxLocator.toUpperCase()
     }
     else{
       var i:number

@@ -8,7 +8,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms'
 import { MoonComponent }  from './line-chart/moon.component';
 import { NgDatepickerModule } from 'ng2-datepicker';
-import { SalesComponent } from './sales/sales.component';
 
 const routes: Routes = [
   {path: 'bar-chart', component: LineChartComponent},
@@ -19,8 +18,7 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     LineChartComponent,
-	MoonComponent,
-	SalesComponent
+	MoonComponent
   ],
   imports: [
     BrowserModule,

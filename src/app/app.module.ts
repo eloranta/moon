@@ -12,6 +12,7 @@ import { SalesComponent } from './sales/sales.component';
 
 const routes: Routes = [
   {path: 'bar-chart', component: LineChartComponent},
+  {path: 'sales', component: SalesComponent},
   {path: '**', component: LineChartComponent }
 ];
 

@@ -1,0 +1,10 @@
+1. install Node
+2. cd /zown
+3. cmd
+4. git clone https://github.com/eloranta/moon.git
+5. npm install
+6. npm install -g @angular/cli
+7. Windows PowerShell as Admin: Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+8. set NODE_OPTIONS=--openssl-legacy-provider
+9. ng serve --open
+0. ng build
